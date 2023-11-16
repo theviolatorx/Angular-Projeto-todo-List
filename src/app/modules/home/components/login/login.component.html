@@ -1,0 +1,47 @@
+<div *ngIf="!checkUser(); else login">
+  <form class="container user-admin-form" [formGroup]="userAdmin" (ngSubmit)="onRegisterSubmit(userAdmin.value)">
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input type="text" class="form-control" id="username" formControlName="username"  placeholder="Seu username" required>
+      <div *ngIf="userAdmin.get('username')?.invalid && (userAdmin.get('username')?.dirty || userAdmin.get('username')?.touched)">
+        <div class="text-danger" *ngIf="userAdmin.get('username')?.errors?.['required']">
+          Username é obrigatório.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" class="form-control" id="password" formControlName="password"  placeholder="Sua senha" required>
+      <div *ngIf="userAdmin.get('password')?.invalid && (userAdmin.get('password')?.dirty || userAdmin.get('password')?.touched)">
+        <div class="text-danger" *ngIf="userAdmin.get('password')?.errors?.['required']">
+          Senha é obrigatória.
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!userAdmin.valid">Registrar</button>
+  </form>
+</div>
+
+<ng-template #login>
+  <form class="container user-admin-form" [formGroup]="userAdmin" (ngSubmit)="onLoginSubmit(userAdmin.value)">
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input type="text" class="form-control" id="username" formControlName="username"  placeholder="Seu username" required>
+      <div *ngIf="userAdmin.get('username')?.invalid && (userAdmin.get('username')?.dirty || userAdmin.get('username')?.touched)">
+        <div class="text-danger" *ngIf="userAdmin.get('username')?.errors?.['required']">
+          Username é obrigatório.
+        </div>
+      </div>
+    </div>
+    <div class="form-group"> 
+      <label for="password">Password:</label>
+      <input type="password" class="form-control" id="password" formControlName="password"  placeholder="Sua senha" required>
+      <div *ngIf="userAdmin.get('password')?.invalid && (userAdmin.get('password')?.dirty || userAdmin.get('password')?.touched)">
+        <div class="text-danger" *ngIf="userAdmin.get('password')?.errors?.['required']">
+          Senha é obrigatória.
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!userAdmin.valid">Entrar</button>
+  </form>
+</ng-template>
