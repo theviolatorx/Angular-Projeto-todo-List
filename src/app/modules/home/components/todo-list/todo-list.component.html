@@ -2,7 +2,8 @@
 
     <ul *ngIf="taskList.length">
         <li *ngFor="let item of taskList;index as i;">
-            <input type="checkbox" [(ngModel)]="item.checked">
+            <input type="checkbox" [(ngModel)]="item.checked" id="item-checked">
+            <label for="item-checked" class="d-none">Check item complete</label>
             <input type="text" (keyup)="validationInput(item.task, i);" [(ngModel)]="item.task" [ngClass]="{'checked': item.checked}">
 
             <button (click)="deleteItemTaskList(i);">
