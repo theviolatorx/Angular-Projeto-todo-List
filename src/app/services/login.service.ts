@@ -1,26 +1,35 @@
 import { Injectable } from '@angular/core';
-import { User } from '../models/user';
+import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { UserToken } from '../models/user-token';
+import { LoginCredentials } from '../models/login-credentials.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoginService {
-  user: User[] = [];
+  private apiBaseUrl = 'http://localhost:5000/auth/login';
 
-  constructor() {
-    this.getUserFromLocalStorage();
+  constructor(private http: HttpClient) {}
+
+  public login(credentials: LoginCredentials): Observable<UserToken> {
+    return this.http.post<UserToken>(this.apiBaseUrl, credentials);
   }
 
-  getUserByUsername(username: string){
-    return this.user.find( user => user.username === username);
+  public isLoggedIn(): Observable<boolean> {
+    const token = localStorage.getItem('TOKEN');
+    return token ? of(true) : of(false);
   }
 
-  saveUserToLocalStorage(user: User) {
-    this.user.push(user);
-    localStorage.setItem('user', JSON.stringify(this.user));
-  }
+  public checkUserRoles(roles: string[]): Observable<boolean> {
+    return new Observable<boolean>((subscriber) => {
+      const userRoles = JSON.parse(localStorage.getItem('USER_ROLES') || '[]');
 
-  getUserFromLocalStorage() {
-    return localStorage.getItem('user');
+      if (userRoles.some((role: string) => roles.includes(role))) {
+        subscriber.next(true);
+      }
+
+      subscriber.next(false);
+    });
   }
 }

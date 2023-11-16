@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { LoginService } from '../../../../services/login.service';
-import { User } from '../../../../models/user';
 import { ToastrService } from 'ngx-toastr';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { UserToken } from 'src/app/models/user-token';
+import { first } from 'rxjs';
+import { LoginCredentials } from 'src/app/models/login-credentials.model';
 
 @Component({
   selector: 'app-login',
@@ -11,46 +13,52 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent implements OnInit {
-  username = ''
-  password = ''
-  userAdmin: FormGroup;
+  public userAdmin!: FormGroup;
 
-  constructor(private loginService: LoginService, private route: ActivatedRoute, private router: Router, private toastr: ToastrService) {
+  constructor(
+    private loginService: LoginService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
+
+  ngOnInit(): void {
+    this.buildForm();
+  }
+
+  private buildForm(): void {
     this.userAdmin = new FormGroup({
-      username: new FormControl('',[Validators.required]),
-      password: new FormControl('',[Validators.required]),
+      email: new FormControl(null, [Validators.required, Validators.email, this.emailValidator()]),
+      password: new FormControl(null, [Validators.required]),
     });
   }
 
-  ngOnInit() {
-    console.log(this.loginService.getUserFromLocalStorage())
-
-    const currentUser = this.loginService.getUserFromLocalStorage()
-    if (currentUser && currentUser.length > 0) {
-      this.username = JSON.parse(currentUser)[0].username;
-      this.password = JSON.parse(currentUser)[0].password;
-    } else {
-      this.username = 'N/A';
-    }
-    console.log(this.checkUser())
+  public login(): void {
+    const payload: LoginCredentials = this.userAdmin.getRawValue();
+    this.loginService
+      .login(payload)
+      .pipe(first())
+      .subscribe({
+        next: (res: UserToken) => {
+          localStorage.setItem('TOKEN', res.token);
+        },
+        error: (err) => {
+          console.log(err);
+          this.toastr.error('Ops, algo deu errado...', 'Erro');
+        },
+        complete: () => {
+          this.router.navigate(['home']);
+          this.toastr.success('Bem vindo(a)!', 'Olá!');
+        },
+      });
   }
 
-  checkUser(): boolean {
-    return !!this.username && !!this.password;
-  }
-
-
-  onRegisterSubmit(userAdmin: User) {
-    this.loginService.saveUserToLocalStorage(userAdmin);
-    location.reload();
-  }
-
-  onLoginSubmit(userAdmin: User) {
-    if (this.username == userAdmin.username && this.password == userAdmin.password) {
-      this.router.navigate(['home']);
-      this.toastr.success('Bem vindo(a)!', 'Olá!');
-    } else {
-      this.toastr.error('Usuário ou senha inexistente.', 'Erro');
-    }
+  emailValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const email: string = control.value;
+      if (email && email.indexOf('@email.com') === -1) {
+        return { 'invalidEmail': true };
+      }
+      return null;
+    };
   }
 }
