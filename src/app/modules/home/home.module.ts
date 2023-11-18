@@ -10,7 +10,7 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
 // Page
 import { HomeComponent } from './pages/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from '../../core/auth/components/login/login.component';
 
 
 

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
-import { LoginService } from '../../../../services/login.service';
+import { LoginService } from '../../services/login.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-import { UserToken } from 'src/app/models/user-token';
+import { UserToken } from 'src/app/core/auth/models/user-token';
 import { first } from 'rxjs';
-import { LoginCredentials } from 'src/app/models/login-credentials.model';
+import { LoginCredentials } from 'src/app/core/auth/models/login-credentials.model';
 
 @Component({
   selector: 'app-login',
@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
 
   public login(): void {
     const payload: LoginCredentials = this.userAdmin.getRawValue();
+    console.log('next');
     this.loginService
       .login(payload)
       .pipe(first())
