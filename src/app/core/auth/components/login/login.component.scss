@@ -1,0 +1,51 @@
+.user-admin-form {
+  padding: 120px 280px;
+}
+
+.form-group {
+  margin-bottom: 35px;
+}
+
+label {
+  font-size: 22px;
+}
+
+input.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button.btn-primary {
+  font-size: 20px;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button.btn-primary:disabled {
+  font-size: 20px;
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.text-danger {
+  color: #dc3545;
+  margin-top: 5px;
+}
+
+.ng-invalid.ng-touched {
+  border: 1px solid #dc3545;
+}
+
+.text-danger.email-error {
+  margin-top: 5px;
+}
+
+.text-danger.invalidEmail {
+  color: #dc3545;
+  margin-top: 5px;
+}

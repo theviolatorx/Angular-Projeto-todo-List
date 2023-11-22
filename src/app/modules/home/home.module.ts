@@ -9,7 +9,8 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
 
 // Page
 import { HomeComponent } from './pages/home/home.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from '../../core/auth/components/login/login.component';
 
 
 
@@ -19,12 +20,13 @@ import { FormsModule } from '@angular/forms';
     TodoButtonDeleteAllComponent,
     TodoInputAddItensComponent,
     TodoListComponent,
-    HomeComponent
-    
+    HomeComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class HomeModule { }

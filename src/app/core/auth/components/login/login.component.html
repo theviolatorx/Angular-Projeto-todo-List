@@ -1,0 +1,26 @@
+<div>
+  <form class="container user-admin-form" [formGroup]="userAdmin">
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="text" class="form-control" id="email" formControlName="email"  placeholder="Seu email" required>
+      <div *ngIf="userAdmin.get('email')?.invalid && (userAdmin.get('email')?.dirty || userAdmin.get('email')?.touched)">
+        <div class="text-danger" *ngIf="userAdmin.get('email')?.errors?.['required']">
+          Email é obrigatório.
+        </div>
+        <div class="text-danger" *ngIf="userAdmin.get('email')?.errors?.['email'] || userAdmin.get('email')?.errors?.['invalidEmail']">
+          Email inválido.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" class="form-control" id="password" formControlName="password"  placeholder="Sua senha" required>
+      <div *ngIf="userAdmin.get('password')?.invalid && (userAdmin.get('password')?.dirty || userAdmin.get('password')?.touched)">
+        <div class="text-danger" *ngIf="userAdmin.get('password')?.errors?.['required']">
+          Senha é obrigatória.
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="login()" [disabled]="!userAdmin.valid">Entrar</button>
+  </form>
+</div>
