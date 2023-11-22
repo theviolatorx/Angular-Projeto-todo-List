@@ -1,0 +1,56 @@
+<div  class="container text-center">
+    <div>
+      <div class="row align-items-start">
+        <div class="col-2">
+        </div>
+        <div class="col">
+          <h2>Lista de Tarefas</h2>
+        </div>
+        <div class="col-2 d-flex justify-content-end">
+          <button type="button" class="btn btn-primary">Adicionar <i class="bi bi-plus-circle"></i></button>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <table class="table">
+        <thead>
+          <th>Id</th>
+          <th>Título</th>
+          <th>Categoria</th>
+          <th>Concluído</th>
+          <th>Data de entrega</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let task of todoTasks">
+            <td>{{ task.id }}</td>
+            <td>{{ task.title }}</td>
+            <td>{{ task.category }}</td>
+            <td>{{ task.done }}</td>
+            <td>{{ task.deadline | date: "dd/MM/yyyy" : 'UTC' }}</td>
+            <td>
+              <button class="btn btn-secondary me-1" ><i class="bi bi-pencil-square"></i></button>
+              <button class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#todoTaskDeleteModal" (click)="openModalConfirmDelete(task.id!)"><i class="bi bi-trash"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="todoTaskDeleteModal" tabindex="-1" aria-labelledby="todoTaskDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="todoTaskDeleteModalLabel">Excluir Tarefa</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Deseja realmente excluir a tarefa com o id {{ id }} ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+          <button type="button" class="btn btn-danger" (click)="deleteTodoTaskById(task.id)" data-bs-dismiss="modal">Sim</button>
+        </div>
+      </div>
+    </div>
+  </div>
