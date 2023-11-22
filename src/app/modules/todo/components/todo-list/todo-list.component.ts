@@ -5,6 +5,7 @@ import { TaskList } from '../../../home/model/task-list';
 import { TodoService } from '../../services/todo.service';
 import { first } from 'rxjs';
 import { Todo } from '../../models/todo';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-todo-list',
@@ -13,11 +14,17 @@ import { Todo } from '../../models/todo';
 })
 export class TodoListComponent implements OnInit {
   public todoTasks: Todo[] = [];
+  public taskId: string = '';
 
-  constructor(private todoService: TodoService) {}
+  constructor(private todoService: TodoService, private router: Router) {}
 
   ngOnInit() {
     this.getTasks();
+    this.taskId = '';
+  }
+
+  public navigateToCreate(): void{
+    this.router.navigate(['/home/add'])
   }
 
   public getTasks(): void {
@@ -40,5 +47,13 @@ export class TodoListComponent implements OnInit {
 
   public deleteUser(id: string): void {
    
+  }
+
+  public deleteTodoTaskById(): void {
+    console.log('Excluir a task de ID:', this.taskId);
+  }
+
+  public openModalConfirmDelete(id: string): void {
+    this.taskId = id;
   }
 }

@@ -31,7 +31,7 @@ import { TodoComponent } from './modules/todo/components/todo/todo.component';
     HttpClientModule,
     NgxMaskPipe,
     NgxMaskDirective,
-    TodoComponent
+    
   ],
   providers: [
     provideEnvironmentNgxMask(),
