@@ -1,23 +1,15 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
-  AbstractControl,
   FormControl,
   FormGroup,
-  Validators,
+  Validators
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
-  Observable,
   Subject,
-  debounceTime,
-  distinctUntilChanged,
-  filter,
-  first,
-  takeUntil,
+  first
 } from 'rxjs';
-import { UserToken } from 'src/app/core/auth/models/user-token';
 import { TodoService } from '../../services/todo.service';
-import { Todo } from '../../models/todo';
 
 @Component({
   selector: 'app-todo',
@@ -27,7 +19,7 @@ import { Todo } from '../../models/todo';
 export class TodoComponent implements OnInit, OnDestroy {
 
   id: string = 'id';
-  public todoTask!: FormControl;
+  public todoTask!: FormGroup;
 
   constructor(private todoService: TodoService,  private route: ActivatedRoute, private router: Router) {}
 
@@ -37,14 +29,14 @@ export class TodoComponent implements OnInit, OnDestroy {
   }
 
   private buildForm(): void {
-    this.todoTask = new FormControl({
+    this.todoTask = new FormGroup({
       id: new FormControl(),
       title: new FormControl(null, [Validators.required, Validators.minLength(3)]),
       category: new FormControl(null, [Validators.required, Validators.minLength(3)]),
       done:  new FormControl(null, [Validators.required]),
       deadline:  new FormControl(null, [Validators.required]),
       userId: new FormControl(),
-    })
+    });
   }
 
   private ngUnsubscribe = new Subject();

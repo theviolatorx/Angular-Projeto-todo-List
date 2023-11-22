@@ -11,6 +11,7 @@ import { TodoListComponent } from '../todo/components/todo-list/todo-list.compon
 import { HomeComponent } from './pages/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from '../../core/auth/components/login/login.component';
+import { TodoComponent } from '../todo/components/todo/todo.component';
 
 
 
@@ -21,7 +22,8 @@ import { LoginComponent } from '../../core/auth/components/login/login.component
     TodoInputAddItensComponent,
     TodoListComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    TodoComponent
   ],
   imports: [
     CommonModule,
