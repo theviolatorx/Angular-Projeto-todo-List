@@ -18,7 +18,8 @@ export class RequestInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<unknown>> {
     if (
       request.url.includes('/login') ||
-      request.url.includes('/users/create')
+      request.url.includes('/tasks') ||
+      request.url.includes('/tasks/{id}')
     ) {
       return next.handle(request);
     }

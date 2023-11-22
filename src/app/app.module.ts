@@ -11,10 +11,10 @@ import {
   NgxMaskPipe,
   provideEnvironmentNgxMask,
 } from 'ngx-mask';
-
-//Modules
 import { HomeModule } from './modules/home/home.module';
 import { RequestInterceptor } from './core/interceptors/request.interceptor';
+import { TodoComponent } from './modules/todo/components/todo/todo.component';
+
 
 @NgModule({
   declarations: [
@@ -31,6 +31,7 @@ import { RequestInterceptor } from './core/interceptors/request.interceptor';
     HttpClientModule,
     NgxMaskPipe,
     NgxMaskDirective,
+    TodoComponent
   ],
   providers: [
     provideEnvironmentNgxMask(),

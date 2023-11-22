@@ -1,7 +1,7 @@
 import { Component, DoCheck } from '@angular/core';
 
 //Interface
-import { TaskList } from './../../model/task-list';
+import { TaskList } from '../../../home/model/task-list';
 
 @Component({
   selector: 'app-todo-list',
