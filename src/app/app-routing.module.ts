@@ -19,6 +19,7 @@ const routes: Routes = [
     children: [
       { path: '', component: TodoListComponent, canActivate: [authGuard] },
       { path: 'create', component: TodoComponent, canActivate: [authGuard] },
+      { path: 'edit/:id', component: TodoComponent, canActivate: [authGuard] },
     ],
   },
 ];
