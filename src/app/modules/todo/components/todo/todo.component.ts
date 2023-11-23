@@ -95,7 +95,7 @@ export class TodoComponent implements OnInit, OnDestroy {
           console.log(err);
         },
         complete: () => {
-          this.router.navigate(['/tasks']);
+          this.router.navigate(['/home']);
         },
       });
   }
