@@ -38,6 +38,13 @@
   </form>
   <div class="d-flex justify-content-end">
     <button
+      color="danger"
+      (click)="navigateToHome();"
+    >
+      Cancelar
+    </button>
+    &nbsp;
+    <button
       color="primary"
       (click)="onSave()"
       [disabled]="todoTask.invalid"

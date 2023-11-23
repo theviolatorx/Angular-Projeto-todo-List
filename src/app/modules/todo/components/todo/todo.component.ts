@@ -44,6 +44,10 @@ export class TodoComponent implements OnInit, OnDestroy {
 
   private ngUnsubscribe = new Subject();
 
+  public navigateToHome():void {
+    this.router.navigate(['/']);
+  }
+
   public getIdFromUrl(): void {
     this.id = this.route.snapshot.params['id'];
     if (this.id) {
