@@ -51,6 +51,12 @@ export class TodoListComponent implements OnInit {
 
   public deleteTodoTaskById(): void {
     console.log('Excluir a task de ID:', this.taskId);
+    this.todoService.deleteTodoTaskById(this.taskId)
+    .pipe(first())
+    .subscribe({
+      error: (err) => { console.log(err); },
+      complete: () => { this.ngOnInit(); },
+    })
   }
 
   public openModalConfirmDelete(id: string): void {
