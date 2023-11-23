@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
         },
         complete: () => {
           this.router.navigate(['home']);
-          this.toastr.success('Bem vindo(a)!', 'Olá!');
+          // this.toastr.success('Bem vindo(a)!', 'Olá!');
         },
       });
   }
