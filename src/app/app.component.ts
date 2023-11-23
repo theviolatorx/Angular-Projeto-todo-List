@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +9,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     localStorage.setItem('USER_ROLES', JSON.stringify(['ADMIN']));
+  }
+
+  @HostListener('window:beforeunload', ['$event'])
+  unloadHandler(event: any) {
+    localStorage.removeItem('TOKEN');
   }
 }
