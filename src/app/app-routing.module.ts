@@ -9,7 +9,6 @@ import { TodoListComponent } from './modules/todo/components/todo-list/todo-list
 import { authGuard } from './core/guards/auth.guard';
 
 // { path: 'add', component: TodoComponent },
-// TODO: Corrigir as rotas e alterar a estrutura dos componentes.
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -19,6 +18,7 @@ const routes: Routes = [
     children: [
       { path: '', component: TodoListComponent, canActivate: [authGuard] },
       { path: 'create', component: TodoComponent, canActivate: [authGuard] },
+      { path: 'edit/:id', component: TodoComponent, canActivate: [authGuard] },
     ],
   },
 ];

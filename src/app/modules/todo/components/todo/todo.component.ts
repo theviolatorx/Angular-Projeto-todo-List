@@ -22,6 +22,7 @@ export class TodoComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.buildForm();
     this.getIdFromUrl();
+    console.log(this.id);
   }
 
   private buildForm(): void {
@@ -35,13 +36,17 @@ export class TodoComponent implements OnInit, OnDestroy {
         Validators.required,
         Validators.minLength(3),
       ]),
-      done: new FormControl(false),
+      done: new FormControl(null),
       deadline: new FormControl(null, [Validators.required]),
       userId: new FormControl(),
     });
   }
 
   private ngUnsubscribe = new Subject();
+
+  public navigateToHome():void {
+    this.router.navigate(['/']);
+  }
 
   public getIdFromUrl(): void {
     this.id = this.route.snapshot.params['id'];
@@ -95,7 +100,7 @@ export class TodoComponent implements OnInit, OnDestroy {
           console.log(err);
         },
         complete: () => {
-          this.router.navigate(['/tasks']);
+          this.router.navigate(['/home']);
         },
       });
   }
