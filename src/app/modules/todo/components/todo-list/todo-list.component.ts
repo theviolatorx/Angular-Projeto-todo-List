@@ -24,7 +24,7 @@ export class TodoListComponent implements OnInit {
   }
 
   public navigateToCreate(): void{
-    this.router.navigate(['/home/add'])
+    this.router.navigate(['/home/create'])
   }
 
   public getTasks(): void {
