@@ -17,14 +17,11 @@ export class RequestInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
     if (
-      request.url.includes('/login') ||
-      request.url.includes('/tasks') ||
-      request.url.includes('/tasks/{id}')
-    ) {
+      request.url.includes('/login')) {
       return next.handle(request);
     }
 
-    const token = localStorage.getItem('TOKEN')
+    const token = localStorage.getItem('TOKEN');
     const modifiedRequest = request.clone({
       setHeaders: {
         Authorization: `Bearer ${token}`,
