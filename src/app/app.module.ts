@@ -35,7 +35,7 @@ import { TodoComponent } from './modules/todo/components/todo/todo.component';
   ],
   providers: [
     provideEnvironmentNgxMask(),
-    { provide: LOCALE_ID, useValue: 'pt' },
+    { provide: LOCALE_ID, useValue: 'pt-br' },
     { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
