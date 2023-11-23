@@ -12,6 +12,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from '../../core/auth/components/login/login.component';
 import { TodoComponent } from '../todo/components/todo/todo.component';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 
 
 
@@ -28,7 +29,8 @@ import { TodoComponent } from '../todo/components/todo/todo.component';
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule
   ]
 })
 export class HomeModule { }
