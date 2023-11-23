@@ -25,7 +25,7 @@
             <td>{{ task.id }}</td>
             <td>{{ task.title }}</td>
             <td>{{ task.category }}</td>
-            <td>{{ task.done }}</td>
+            <td><input type="checkbox" [checked]="task.done" class="custom-checkbox"/></td>
             <td>{{ task.deadline  }}</td> <!-- TODO: Incluir a mascada da data | date: "dd/MM/yyyy" : 'UTC' -->
             <td>
               <button class="btn btn-secondary me-1" ><i class="bi bi-pencil-square"></i></button>
