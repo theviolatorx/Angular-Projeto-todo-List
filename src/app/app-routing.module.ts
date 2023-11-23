@@ -10,6 +10,7 @@ import { TodoListComponent } from './modules/todo/components/todo-list/todo-list
 // { path: 'add', component: TodoComponent },
 // TODO: Corrigir as rotas e alterar a estrutura dos componentes.
 const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'home', component: HomeComponent,  children: [
     { path: '', component: TodoListComponent },
     { path: 'add', component: TodoComponent },

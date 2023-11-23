@@ -1,27 +1,23 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  Validators
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import {
-  Subject,
-  first
-} from 'rxjs';
+import { Subject, first } from 'rxjs';
 import { TodoService } from '../../services/todo.service';
 
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
-  styleUrl: './todo.component.scss'
+  styleUrl: './todo.component.scss',
 })
 export class TodoComponent implements OnInit, OnDestroy {
-
   id: string = 'id';
   public todoTask!: FormGroup;
 
-  constructor(private todoService: TodoService,  private route: ActivatedRoute, private router: Router) {}
+  constructor(
+    private todoService: TodoService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.buildForm();
@@ -31,16 +27,21 @@ export class TodoComponent implements OnInit, OnDestroy {
   private buildForm(): void {
     this.todoTask = new FormGroup({
       id: new FormControl(),
-      title: new FormControl(null, [Validators.required, Validators.minLength(3)]),
-      category: new FormControl(null, [Validators.required, Validators.minLength(3)]),
-      done:  new FormControl(null, [Validators.required]),
-      deadline:  new FormControl(null, [Validators.required]),
+      title: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
+      category: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(3),
+      ]),
+      done: new FormControl(false),
+      deadline: new FormControl(null, [Validators.required]),
       userId: new FormControl(),
     });
   }
 
   private ngUnsubscribe = new Subject();
-
 
   public getIdFromUrl(): void {
     this.id = this.route.snapshot.params['id'];
