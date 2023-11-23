@@ -1,11 +1,10 @@
-import { Component, DoCheck, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 //Interface
-import { TaskList } from '../../../home/model/task-list';
-import { TodoService } from '../../services/todo.service';
+import { Router } from '@angular/router';
 import { first } from 'rxjs';
 import { Todo } from '../../models/todo';
-import { Router } from '@angular/router';
+import { TodoService } from '../../services/todo.service';
 
 @Component({
   selector: 'app-todo-list',

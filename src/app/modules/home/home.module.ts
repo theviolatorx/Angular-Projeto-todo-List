@@ -1,18 +1,18 @@
-import { Component, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Components
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { TodoListComponent } from '../todo/components/todo-list/todo-list.component';
 import { HeaderComponent } from './components/header/header.component';
 import { TodoButtonDeleteAllComponent } from './components/todo-button-delete-all/todo-button-delete-all.component';
 import { TodoInputAddItensComponent } from './components/todo-input-add-itens/todo-input-add-itens.component';
-import { TodoListComponent } from '../todo/components/todo-list/todo-list.component';
 
 // Page
-import { HomeComponent } from './pages/home/home.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from '../../core/auth/components/login/login.component';
 import { TodoComponent } from '../todo/components/todo/todo.component';
-import { AppRoutingModule } from 'src/app/app-routing.module';
+import { HomeComponent } from './pages/home/home.component';
 
 
 
@@ -30,7 +30,7 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
   ]
 })
 export class HomeModule { }
