@@ -5,7 +5,7 @@
         <h1 class="mb-4">Nova Tarefa!</h1>
 
       <div class="form-floating mb-3 col">
-        <input type="text" class="form-control" id="title" formControlName="title" placeholder="Título" [maxlength]="20">
+        <input type="text" class="form-control" id="title" formControlName="title" placeholder="Título" [maxlength]="40">
         <div *ngIf="todoTask.get('title')?.invalid && (todoTask.get('title')?.dirty || todoTask.get('title')?.touched)">
           <div class="text-danger" *ngIf="todoTask.get('title')?.errors?.['required']">
             Título é obrigatório.
@@ -17,7 +17,7 @@
         <label for="title">Título</label>
       </div>
       <div class="form-floating mb-3 col">
-        <input type="text" class="form-control" id="category" formControlName="category" placeholder="Categoria" [maxlength]="10">
+        <input type="text" class="form-control" id="category" formControlName="category" placeholder="Categoria" [maxlength]="80">
         <div
           *ngIf="todoTask.get('category')?.invalid && (todoTask.get('category')?.dirty || todoTask.get('category')?.touched)">
           <div class="text-danger" *ngIf="todoTask.get('category')?.errors?.['required']">
