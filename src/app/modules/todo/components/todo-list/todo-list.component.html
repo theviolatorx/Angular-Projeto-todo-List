@@ -15,12 +15,12 @@
 
   <div class="d-flex flex-wrap gap-2 mt-2 justify-content-center">
     <div class="card col-12 col-md-6 col-lg-4 max-width-130" *ngFor="let task of todoTasks; let i = index">
-      <h6 class="card-header">{{ task.title.toUpperCase() }}</h6>
+      <h6 class="card-header" [ngClass]="{'checked': task.done}">{{ task.title.toUpperCase() }}</h6>
       <div class="card-body">
-        <h5 class="card-title">{{ task.category }}</h5>
-        <p class="card-text">Tarefa realizada? <input type="checkbox" [checked]="task.done" [(ngModel)]="taskDoneChance[i] = task.done" (change)="onTaskDoneChange(task, i);"/>
+        <h5 class="card-title" [ngClass]="{'checked': task.done}">{{ task.category }}</h5>
+        <p class="card-text" [ngClass]="{'checked': task.done}">Tarefa realizada? <input type="checkbox" [checked]="task.done" [(ngModel)]="taskDoneChance[i] = task.done" [ngClass]="{'checked': task.done}" (change)="onTaskDoneChange(task, i);"/>
         </p>
-        <p class="card-text">{{ task.deadline }}</p>
+        <p class="card-text" [ngClass]="{'checked': task.done}">{{ task.deadline }}</p>
         <button class="btn btn-secondary me-1" routerLink="/home/edit/{{ task.id }}"><i class="bi bi-pencil-square"></i></button>
         <button class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#todoTaskDeleteModal" (click)="openModalConfirmDelete(task.id!)"><i class="bi bi-trash"></i></button>
       </div>
