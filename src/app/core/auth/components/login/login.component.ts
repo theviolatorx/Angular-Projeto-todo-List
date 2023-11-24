@@ -34,7 +34,6 @@ export class LoginComponent implements OnInit {
 
   public login(): void {
     const payload: LoginCredentials = this.userAdmin.getRawValue();
-    console.log('next');
     this.loginService
       .login(payload)
       .pipe(first())
