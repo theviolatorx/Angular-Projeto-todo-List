@@ -22,7 +22,8 @@ export class TodoComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.buildForm();
     this.getIdFromUrl();
-    console.log(this.id);
+    // TODO: Excluir linha abaixo
+    console.log(this.id); 
   }
 
   private buildForm(): void {
