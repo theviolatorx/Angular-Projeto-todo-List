@@ -22,8 +22,6 @@ export class TodoComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.buildForm();
     this.getIdFromUrl();
-    // TODO: Excluir linha abaixo
-    console.log(this.id); 
   }
 
   private buildForm(): void {
@@ -37,7 +35,7 @@ export class TodoComponent implements OnInit, OnDestroy {
         Validators.required,
         Validators.minLength(3),
       ]),
-      done: new FormControl(null),
+      done: new FormControl(false),
       deadline: new FormControl(null, [Validators.required]),
       userId: new FormControl(),
     });
@@ -53,6 +51,7 @@ export class TodoComponent implements OnInit, OnDestroy {
     this.id = this.route.snapshot.params['id'];
     if (this.id) {
       this.getTodoTaskById();
+      
     }
   }
 

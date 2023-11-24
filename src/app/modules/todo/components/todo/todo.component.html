@@ -1,55 +1,53 @@
-<div class="container">
-  <form [formGroup]="todoTask">
-    <h1>Você esta inserindo uma nova tarefa</h1>
-    
-    <div class="form-floating mb-3">
-      <input type="text" class="form-control" id="title" formControlName="title" placeholder="Título">
-      <div *ngIf="todoTask.get('title')?.invalid && (todoTask.get('title')?.dirty || todoTask.get('title')?.touched)">
-        <div class="text-danger" *ngIf="todoTask.get('title')?.errors?.['required']">
-          Título é obrigatório.
+<div class="d-flex w-100 justify-content-center">
+  <div class="container mt-5 largura">
+    <form [formGroup]="todoTask">
+
+        <h1 class="mb-4">Nova Tarefa!</h1>
+
+      <div class="form-floating mb-3 col">
+        <input type="text" class="form-control" id="title" formControlName="title" placeholder="Título" [maxlength]="20">
+        <div *ngIf="todoTask.get('title')?.invalid && (todoTask.get('title')?.dirty || todoTask.get('title')?.touched)">
+          <div class="text-danger" *ngIf="todoTask.get('title')?.errors?.['required']">
+            Título é obrigatório.
+          </div>
+          <div class="text-danger" *ngIf="todoTask.get('title')?.errors?.['minlength']">
+            Título tem que ter mais de 3 caracteres.
+          </div>
         </div>
-        <div class="text-danger" *ngIf="todoTask.get('title')?.errors?.['minlength']">
-          Título tem que ter mais de 3 caracteres.
-        </div>
+        <label for="title">Título</label>
       </div>
-      <label for="title">Título</label>
-    </div>
-    <div class="form-floating mb-3">
-      <input type="text" class="form-control" id="category" formControlName="category" placeholder="Categoria">
-      <div *ngIf="todoTask.get('category')?.invalid && (todoTask.get('category')?.dirty || todoTask.get('category')?.touched)">
-        <div class="text-danger" *ngIf="todoTask.get('category')?.errors?.['required']">
-          Categoria é obrigatória.
+      <div class="form-floating mb-3 col">
+        <input type="text" class="form-control" id="category" formControlName="category" placeholder="Categoria" [maxlength]="10">
+        <div
+          *ngIf="todoTask.get('category')?.invalid && (todoTask.get('category')?.dirty || todoTask.get('category')?.touched)">
+          <div class="text-danger" *ngIf="todoTask.get('category')?.errors?.['required']">
+            Categoria é obrigatória.
+          </div>
+          <div class="text-danger" *ngIf="todoTask.get('category')?.errors?.['minlength']">
+            Categoria tem que ter mais de 3 caracteres.
+          </div>
         </div>
-        <div class="text-danger" *ngIf="todoTask.get('category')?.errors?.['minlength']">
-          Categoria tem que ter mais de 3 caracteres.
-        </div>
+        <label for="category">Categoria</label>
       </div>
-      <label for="category">Categoria</label>
-    </div>
-    <div class="form-floating mb-3">
       <!-- TODO: Verificar a estilização do botão pq não esta marcando quando clica -->
-      <input type="checkbox" class="form-control" id="done" name="done" formControlName="done">
-      <label for="done">Concluída</label>
+      <!-- <div class="form-floating mb-3 col">-->
+      <input type="checkbox" class="form-control" id="done" name="done" formControlName="done" hidden>
+      <!-- <label for="done">Concluída</label>
+    </div> -->
+      <div class="form-floating mb-3 col">
+        <input type="date" class="form-control" id="deadline" name="deadline" formControlName="deadline">
+        <label for="deadline">Data de entrega</label>
+      </div>
+    </form>
+    <div class="d-flex col justify-content-end">
+      <button color="danger" (click)="navigateToHome();">
+        Cancelar
+      </button>
+      &nbsp;
+      <button color="primary" (click)="onSave()" [disabled]="todoTask.invalid">
+        Salvar
+      </button>
     </div>
-    <div class="form-floating mb-3">
-      <input type="date" class="form-control" id="deadline" name="deadline" formControlName="deadline">
-      <label for="deadline">Data de entrega</label>
-    </div>
-  </form>
-  <div class="d-flex justify-content-end">
-    <button
-      color="danger"
-      (click)="navigateToHome();"
-    >
-      Cancelar
-    </button>
-    &nbsp;
-    <button
-      color="primary"
-      (click)="onSave()"
-      [disabled]="todoTask.invalid"
-    >
-      Salvar
-    </button>
   </div>
+
 </div>
