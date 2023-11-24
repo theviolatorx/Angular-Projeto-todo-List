@@ -14,6 +14,7 @@ import { TodoService } from '../../services/todo.service';
 export class TodoListComponent implements OnInit {
   public todoTasks: Todo[] = [];
   public taskId: string = '';
+  public taskDoneChance: boolean[] = [];
 
   constructor(private todoService: TodoService, private router: Router) {}
 
@@ -40,14 +41,6 @@ export class TodoListComponent implements OnInit {
       });
   }
 
-  public editUser(id: string): void {
-
-  }
-
-  public deleteUser(id: string): void {
-   
-  }
-
   public deleteTodoTaskById(): void {
     console.log('Excluir a task de ID:', this.taskId);
     this.todoService.deleteTodoTaskById(this.taskId)
@@ -60,5 +53,13 @@ export class TodoListComponent implements OnInit {
 
   public openModalConfirmDelete(id: string): void {
     this.taskId = id;
+  }
+
+  public onTaskDoneChange(taskDone: boolean, taskId: string, index: number): void{
+    console.log('Task Done: ', taskDone);
+    console.log('Task id: ', taskId);
+    console.log('Task Change: ', this.taskDoneChance[index]);
+
+
   }
 }
