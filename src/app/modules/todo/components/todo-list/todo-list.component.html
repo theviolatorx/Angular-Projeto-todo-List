@@ -1,17 +1,33 @@
-<div  class="container text-center">
-    <div>
-      <div class="row align-items-start">
-        <div class="col-2">
-        </div>
-        <div class="col">
-          <h2>Lista de Tarefas</h2>
-        </div>
-        <div class="col-2 d-flex justify-content-end">
-          <button type="button" class="btn btn-primary" (click)="navigateToCreate();">Adicionar <i class="bi bi-plus-circle"></i></button>
-        </div>
+<div class="container mt-4">
+  <div>
+    <div class="row align-items-start">
+      <div class="col-2">
+      </div>
+      <div class="col-7">
+        <h2>Lista de Tarefas</h2>
+      </div>
+      <div class="col-2 d-flex justify-content-end">
+        <button type="button" class="btn btn-primary" (click)="navigateToCreate();">Adicionar <i
+            class="bi bi-plus-circle"></i></button>
       </div>
     </div>
-    <div class="container">
+  </div>
+
+  <div class="d-flex flex-wrap gap-2 mt-2 justify-content-center">
+    <div class="card col-12 col-md-6 col-lg-4 max-width-130" *ngFor="let task of todoTasks">
+      <h6 class="card-header">{{ task.title }}</h6>
+      <div class="card-body">
+        <h5 class="card-title">{{ task.category }}</h5>
+        <p class="card-text">Tarefa realizada? <input type="checkbox" [checked]="task.done" class="custom-checkbox" />
+        </p>
+        <p class="card-text">{{ task.deadline }}</p>
+        <button class="btn btn-secondary me-1" routerLink="/home/edit/{{ task.id }}"><i class="bi bi-pencil-square"></i></button>
+        <button class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#todoTaskDeleteModal" (click)="openModalConfirmDelete(task.id!)"><i class="bi bi-trash"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="container">
       <table class="table">
         <thead>
           <th>Id</th>
@@ -26,8 +42,8 @@
             <td>{{ task.title }}</td>
             <td>{{ task.category }}</td>
             <td><input type="checkbox" [checked]="task.done" class="custom-checkbox"/></td>
-            <td>{{ task.deadline  }}</td> <!-- TODO: Incluir a mascada da data | date: "dd/MM/yyyy" : 'UTC' -->
-            <td>
+            <td>{{ task.deadline  }}</td> TODO: Incluir a mascada da data | date: "dd/MM/yyyy" : 'UTC' -->
+  <!-- <td>
               <button class="btn btn-secondary me-1" routerLink="/home/edit/{{ task.id }}"><i class="bi bi-pencil-square"></i></button>
               <button class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#todoTaskDeleteModal" (click)="openModalConfirmDelete(task.id!)"><i class="bi bi-trash"></i></button>
             </td>
@@ -35,9 +51,10 @@
         </tbody>
       </table>
     </div>
-  </div>
-  
-  <div class="modal fade" id="todoTaskDeleteModal" tabindex="-1" aria-labelledby="todoTaskDeleteModalLabel" aria-hidden="true">
+  </div> -->
+
+  <div class="modal fade" id="todoTaskDeleteModal" tabindex="-1" aria-labelledby="todoTaskDeleteModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -49,7 +66,8 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
-          <button type="button" class="btn btn-danger" (click)="deleteTodoTaskById();" data-bs-dismiss="modal">Sim</button>
+          <button type="button" class="btn btn-danger" (click)="deleteTodoTaskById();"
+            data-bs-dismiss="modal">Sim</button>
         </div>
       </div>
     </div>

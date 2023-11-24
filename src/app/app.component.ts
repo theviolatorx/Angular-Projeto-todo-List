@@ -5,14 +5,14 @@ import { Component, HostListener, OnInit } from '@angular/core';
   template: `<router-outlet></router-outlet>`
 })
 export class AppComponent implements OnInit {
-  title = 'projeto-todoList';
 
   ngOnInit(): void {
     localStorage.setItem('USER_ROLES', JSON.stringify(['ADMIN']));
   }
 
-  @HostListener('window:beforeunload', ['$event'])
-  unloadHandler(event: any) {
-    localStorage.removeItem('TOKEN');
-  }
+  // TODO: Descomentar para deslogar quando fechar a janela
+  // @HostListener('window:beforeunload', ['$event'])
+  // unloadHandler(event: any) {
+  //   localStorage.removeItem('TOKEN');
+  // }
 }
