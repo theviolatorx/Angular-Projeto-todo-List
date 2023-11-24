@@ -34,6 +34,7 @@ export class TodoListComponent implements OnInit {
       .subscribe({
         next: (res: Todo[]) => {
           this.todoTasks = res;
+          this.todoTasks.sort((first, last) => Number(first.done) - Number(last.done));
         },
         error: (err) => {
           console.log(err);
