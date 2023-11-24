@@ -18,8 +18,7 @@
       <h6 class="card-header">{{ task.title.toUpperCase() }}</h6>
       <div class="card-body">
         <h5 class="card-title">{{ task.category }}</h5>
-        <!-- TODO: Retirar a Class Custom caso a Classe esteja comentada -->
-        <p class="card-text">Tarefa realizada? <input type="checkbox" [checked]="task.done" [(ngModel)]="taskDoneChance[i] = task.done" class="custom-checkbox" (change)="onTaskDoneChange(task.done, task.id, i);"/>
+        <p class="card-text">Tarefa realizada? <input type="checkbox" [checked]="task.done" [(ngModel)]="taskDoneChance[i] = task.done" (change)="onTaskDoneChange(task, i);"/>
         </p>
         <p class="card-text">{{ task.deadline }}</p>
         <button class="btn btn-secondary me-1" routerLink="/home/edit/{{ task.id }}"><i class="bi bi-pencil-square"></i></button>

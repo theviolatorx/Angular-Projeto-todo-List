@@ -55,11 +55,21 @@ export class TodoListComponent implements OnInit {
     this.taskId = id;
   }
 
-  public onTaskDoneChange(taskDone: boolean, taskId: string, index: number): void{
-    console.log('Task Done: ', taskDone);
-    console.log('Task id: ', taskId);
-    console.log('Task Change: ', this.taskDoneChance[index]);
+  public onTaskDoneChange(task: Todo, index: number): void{
+    this.onUpdate(task);
+  }
 
-
+  public onUpdate(task: Todo): void {
+    this.todoService
+      .edit(task)
+      .pipe(first())
+      .subscribe({
+        error: (err) => {
+          console.log(err);
+        },
+        complete: () => {
+          this.ngOnInit();
+        },
+      });
   }
 }
