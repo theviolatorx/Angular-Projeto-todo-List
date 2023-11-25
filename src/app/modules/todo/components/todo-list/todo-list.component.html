@@ -22,36 +22,10 @@
         </p>
         <p class="card-text" [ngClass]="{'checked': task.done}">{{ task.deadline }}</p>
         <button class="btn btn-secondary me-1" routerLink="/home/edit/{{ task.id }}"><i class="bi bi-pencil-square"></i></button>
-        <button class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#todoTaskDeleteModal" (click)="openModalConfirmDelete(task.id!)"><i class="bi bi-trash"></i></button>
+        <button class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#todoTaskDeleteModal" (click)="openModalConfirmDelete(task.id!, task.title)"><i class="bi bi-trash"></i></button>
       </div>
     </div>
   </div>
-
-  <!-- <div class="container">
-      <table class="table">
-        <thead>
-          <th>Id</th>
-          <th>Título</th>
-          <th>Categoria</th>
-          <th>Concluído</th>
-          <th>Data de entrega</th>
-        </thead>
-        <tbody>
-          <tr *ngFor="let task of todoTasks">
-            <td>{{ task.id }}</td>
-            <td>{{ task.title }}</td>
-            <td>{{ task.category }}</td>
-            <td><input type="checkbox" [checked]="task.done" class="custom-checkbox"/></td>
-            <td>{{ task.deadline  }}</td> TODO: Incluir a mascada da data | date: "dd/MM/yyyy" : 'UTC' -->
-  <!-- <td>
-              <button class="btn btn-secondary me-1" routerLink="/home/edit/{{ task.id }}"><i class="bi bi-pencil-square"></i></button>
-              <button class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#todoTaskDeleteModal" (click)="openModalConfirmDelete(task.id!)"><i class="bi bi-trash"></i></button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div> -->
 
   <div class="modal fade" id="todoTaskDeleteModal" tabindex="-1" aria-labelledby="todoTaskDeleteModalLabel"
     aria-hidden="true">
@@ -62,7 +36,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          Deseja realmente excluir a tarefa com o id {{ taskId }} ?
+          Deseja realmente excluir a tarefa: <strong>{{ taskTitle }}</strong>?
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>

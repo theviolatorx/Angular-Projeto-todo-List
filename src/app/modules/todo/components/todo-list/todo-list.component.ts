@@ -14,6 +14,7 @@ import { TodoService } from '../../services/todo.service';
 export class TodoListComponent implements OnInit {
   public todoTasks: Todo[] = [];
   public taskId: string = '';
+  public taskTitle: string = '';
   public taskDoneChance: boolean[] = [];
 
   constructor(private todoService: TodoService, private router: Router) {}
@@ -21,6 +22,7 @@ export class TodoListComponent implements OnInit {
   ngOnInit() {
     this.getTasks();
     this.taskId = '';
+    this.taskTitle = '';
   }
 
   public navigateToCreate(): void{
@@ -51,8 +53,9 @@ export class TodoListComponent implements OnInit {
     })
   }
 
-  public openModalConfirmDelete(id: string): void {
+  public openModalConfirmDelete(id: string, title: string): void {
     this.taskId = id;
+    this.taskTitle = title;
   }
 
   public onTaskDoneChange(task: Todo, index: number): void{
