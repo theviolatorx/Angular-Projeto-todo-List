@@ -14,5 +14,7 @@ export class AppComponent implements OnInit {
   @HostListener('window:beforeunload', ['$event'])
   unloadHandler(event: any) {
     localStorage.removeItem('TOKEN');
+    console.clear();
   }
+ 
 }
