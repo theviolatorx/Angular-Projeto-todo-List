@@ -7,7 +7,7 @@
         <h2>Lista de Tarefas</h2>
       </div>
       <div class="col-2 d-flex justify-content-end">
-        <button type="button" class="btn btn-primary" (click)="navigateToCreate();">Adicionar <i
+        <button type="button" class="btn btn-primary" (click)="navigateToCreate();">Nova <i
             class="bi bi-plus-circle"></i></button>
       </div>
     </div>
@@ -21,7 +21,7 @@
         <p class="card-text" [ngClass]="{'checked': task.done}">Tarefa realizada? <input type="checkbox" [checked]="task.done" [(ngModel)]="taskDoneChance[i] = task.done" [ngClass]="{'checked': task.done}" (change)="onTaskDoneChange(task, i);"/>
         </p>
         <p class="card-text" [ngClass]="{'checked': task.done}">{{ task.deadline | customDate }}</p>
-        <button class="btn btn-secondary me-1" routerLink="/home/edit/{{ task.id }}"><i class="bi bi-pencil-square"></i></button>
+        <button class="btn btn-secondary me-1" routerLink="/home/edit/{{ task.id }}" [disabled]="task.done"><i class="bi bi-pencil-square"></i></button>
         <button class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#todoTaskDeleteModal" (click)="openModalConfirmDelete(task.id!, task.title)"><i class="bi bi-trash"></i></button>
       </div>
     </div>
