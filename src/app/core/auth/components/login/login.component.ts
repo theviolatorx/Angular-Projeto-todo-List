@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
         },
         error: (err) => {
           console.log(err);
-          this.toastr.error('Ops, algo deu errado...', 'Erro');
+          // this.toastr.error('Ops, algo deu errado...', 'Erro');
         },
         complete: () => {
           this.router.navigate(['home']);
