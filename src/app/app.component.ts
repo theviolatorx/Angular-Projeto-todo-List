@@ -11,8 +11,10 @@ export class AppComponent implements OnInit {
   }
 
   // TODO: Fechou a janela, ele desloga!
-  // @HostListener('window:beforeunload', ['$event'])
-  // unloadHandler(event: any) {
-  //   localStorage.removeItem('TOKEN');
-  // }
+  @HostListener('window:beforeunload', ['$event'])
+  unloadHandler(event: any) {
+    localStorage.removeItem('TOKEN');
+    console.clear();
+  }
+ 
 }
