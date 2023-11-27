@@ -1,19 +1,18 @@
-import { LOCALE_ID, NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { ToastrModule } from 'ngx-toastr';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { LOCALE_ID, NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   NgxMaskDirective,
   NgxMaskPipe,
   provideEnvironmentNgxMask,
 } from 'ngx-mask';
-import { HomeModule } from './modules/home/home.module';
+import { ToastrModule } from 'ngx-toastr';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 import { RequestInterceptor } from './core/interceptors/request.interceptor';
-import { TodoComponent } from './modules/todo/components/todo/todo.component';
+import { HomeModule } from './modules/home/home.module';
 
 
 @NgModule({
