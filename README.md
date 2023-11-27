@@ -1,6 +1,3 @@
----
-marp: true
----
 # Santander Coders 2023 | ADA
 # Turma 1004 - Projeto final - Angular II
 
