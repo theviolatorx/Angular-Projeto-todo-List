@@ -59,11 +59,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Screens Shots:
 
-<img src='./src/assets/screens_shots/Screenshot_0.png' width='100px'>
-<img src='./src/assets/screens_shots/Screenshot_1.png' width='100px'>
-<img src='./src/assets/screens_shots/Screenshot_2.png' width='100px'>
-<img src='./src/assets/screens_shots/Screenshot_3.png' width='100px'>
-<img src='./src/assets/screens_shots/Screenshot_4.png' width='100px'>
+<img src='./src/assets/screens_shots/Screenshot_0.png' width='100px'> <img src='./src/assets/screens_shots/Screenshot_1.png' width='100px'> <img src='./src/assets/screens_shots/Screenshot_2.png' width='100px'> <img src='./src/assets/screens_shots/Screenshot_3.png' width='100px'> <img src='./src/assets/screens_shots/Screenshot_4.png' width='100px'>
 
 ## Squad:
 
