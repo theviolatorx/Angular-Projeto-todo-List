@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, first } from 'rxjs';
 import { TodoService } from '../../services/todo.service';
+import { Todo } from '../../models/todo';
 
 @Component({
   selector: 'app-todo',
@@ -43,7 +44,7 @@ export class TodoComponent implements OnInit, OnDestroy {
 
   private ngUnsubscribe = new Subject();
 
-  public navigateToHome():void {
+  public navigateToHome(): void {
     this.router.navigate(['/']);
   }
 
@@ -51,7 +52,6 @@ export class TodoComponent implements OnInit, OnDestroy {
     this.id = this.route.snapshot.params['id'];
     if (this.id) {
       this.getTodoTaskById();
-      
     }
   }
 
@@ -61,7 +61,9 @@ export class TodoComponent implements OnInit, OnDestroy {
       .pipe(first())
       .subscribe({
         next: (res) => {
-          this.todoTask.patchValue(res);
+          const dados: Todo = res;
+          dados.deadline = this.convertDate(res.deadline);
+          this.todoTask.patchValue(dados);
         },
         error: (err) => {
           console.log(err);
@@ -69,6 +71,15 @@ export class TodoComponent implements OnInit, OnDestroy {
       });
   }
 
+  private convertDate(date: string): string {
+    const data = date.toString();
+    const dia = data.substring(8,10).padStart(2,'0');
+    const mes = String(parseInt(data.substring(5,7))).padStart(2,'0');
+    const ano = parseInt(data.substring(0,4));
+    return `${ano}-${mes}-${dia}`;
+  }
+
+  // return `${ano}-${mes}-${dia}`;
   public onSave(): void {
     if (this.id) {
       this.onUpdate();

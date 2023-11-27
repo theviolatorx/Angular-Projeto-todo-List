@@ -3,6 +3,6 @@ export interface Todo {
   title: string,
   category: string,
   done: boolean,
-  deadline: Date,
+  deadline: string,
   userId: string
 }
