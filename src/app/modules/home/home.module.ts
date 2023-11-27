@@ -11,6 +11,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from '../../core/auth/components/login/login.component';
 import { TodoComponent } from '../todo/components/todo/todo.component';
 import { HomeComponent } from './pages/home/home.component';
+import { CustomDatePipe } from '../todo/pipes/custom-date.pipe';
 
 
 
@@ -20,7 +21,8 @@ import { HomeComponent } from './pages/home/home.component';
     TodoListComponent,
     HomeComponent,
     LoginComponent,
-    TodoComponent
+    TodoComponent,
+    CustomDatePipe
   ],
   imports: [
     CommonModule,
