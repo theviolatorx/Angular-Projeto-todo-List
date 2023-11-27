@@ -2,7 +2,7 @@
   <div class="container mt-5 largura">
     <form [formGroup]="todoTask">
 
-        <h1 class="mb-4">Nova Tarefa!</h1>
+        <h1 class="mb-4">{{ title }}!</h1>
 
       <div class="form-floating mb-3 col">
         <input type="text" class="form-control" id="title" formControlName="title" placeholder="Título" [maxlength]="40">

@@ -11,6 +11,7 @@ import { Todo } from '../../models/todo';
   styleUrl: './todo.component.scss',
 })
 export class TodoComponent implements OnInit, OnDestroy {
+  public title:string = '';
   id: string = 'id';
   public todoTask!: FormGroup;
 
@@ -52,6 +53,9 @@ export class TodoComponent implements OnInit, OnDestroy {
     this.id = this.route.snapshot.params['id'];
     if (this.id) {
       this.getTodoTaskById();
+      this.title = 'Edição de Tarefa';
+    } else {
+      this.title = 'Nova Tarefa';
     }
   }
 
